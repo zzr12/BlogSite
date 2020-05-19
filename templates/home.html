@@ -11,11 +11,42 @@ active
 
 {# 页面内容 #}
 {% block content %}
-	<div class="home-content">
-		<p class="content">用力活着用力爱哪怕肝脑涂地</p>
-		<p class="content">不求任何人满意只要对得起自己</p>
-		<p class="content">关于理想我从来没选择放弃</p>
-		<p class="content">即使在灰头土脸的日子里</p>
-	</div>
+<div class="container " >
+     <div class="row col-md-offset-3" id="Slogan">
+          <div class="col-md-5">
+     <h1 >创造<br>
+          你的文字世界</h1>
+     <p>这里是一个小众博客网站，为您提供简洁快速的功能<br>希望您能在此记录生活、思想以及未来</p>
+          </div>
+          <div class="col-md-5">
+               <div class="login">
+                    <div class="panel panel-default">
+                         <div class="panel-heading">
+                               <h3 class="panel-title">登录</h3>
+                         </div>
+                          <div class="panel-body">
+                               <form action="" method="POST">
+                                   {% csrf_token %}
+                                   {#login_form#}
+                                   {% for field in login_form %}
+                                   <label for="{{field.id_for_label}}">{{field.label}}</label>
+                                   {{field}}
+                                   <!--p class="text-danger">{{field.erros.as_text}}</p-->
+                                   {% endfor %}
+                                   <br>
+                                   <span class="pull-left text-danger">{{login_form.non_field_errors}}</span>
+                                   <span><a href="{% url 'forget' %}" class="pull-right text-primary">忘记密码</a></span><br><br>
+                                   <input type="submit" value="登录" class="btn btn-primary pull-right">
+                              </form>
+                          </div>
+                    </div>
+               </div>
+          </div>
+     
+</div>
+
+     
+
+ </div>
 	<link rel="stylesheet" href="/static/home.css">
 {% endblock %}
